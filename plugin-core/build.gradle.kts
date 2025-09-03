@@ -38,7 +38,7 @@ dependencies {
     implementation("cc.dreamcode.menu:bukkit-serializer:1.4.5")
 
     // -- tasker (easy sync/async scheduler) --
-    implementation("eu.okaeri:okaeri-tasker-bukkit:2.1.0-beta.3")
+    implementation("eu.okaeri:okaeri-tasker-bukkit:3.0.3-beta.1")
 }
 
 tasks.withType<ShadowJar> {
