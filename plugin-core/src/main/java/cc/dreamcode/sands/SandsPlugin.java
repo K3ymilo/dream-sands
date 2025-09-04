@@ -16,6 +16,8 @@ import cc.dreamcode.platform.persistence.component.DocumentPersistenceResolver;
 import cc.dreamcode.platform.persistence.component.DocumentRepositoryResolver;
 import cc.dreamcode.sands.command.KillStreakCommand;
 import cc.dreamcode.sands.command.SandsCommand;
+import cc.dreamcode.sands.command.SetSpawnCommand;
+import cc.dreamcode.sands.command.SpawnCommand;
 import cc.dreamcode.sands.command.handler.InvalidInputHandlerImpl;
 import cc.dreamcode.sands.command.handler.InvalidPermissionHandlerImpl;
 import cc.dreamcode.sands.command.handler.InvalidSenderHandlerImpl;
@@ -26,6 +28,7 @@ import cc.dreamcode.sands.config.PluginConfig;
 import cc.dreamcode.sands.features.SandsController;
 import cc.dreamcode.sands.features.items.StartingItemService;
 import cc.dreamcode.sands.features.killstreak.RewardService;
+import cc.dreamcode.sands.features.spawn.SpawnManager;
 import cc.dreamcode.sands.profile.Profile;
 import cc.dreamcode.sands.profile.ProfileCache;
 import cc.dreamcode.sands.profile.ProfileRepository;
@@ -99,6 +102,9 @@ public final class SandsPlugin extends DreamBukkitPlatform implements DreamBukki
         componentService.registerComponent(StartingItemService.class);
         componentService.registerComponent(SandsController.class);
         componentService.registerComponent(KillStreakCommand.class);
+        componentService.registerComponent(SpawnManager.class);
+        componentService.registerComponent(SetSpawnCommand.class);
+        componentService.registerComponent(SpawnCommand.class);
     }
 
     @Override

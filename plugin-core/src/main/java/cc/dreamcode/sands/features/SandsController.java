@@ -1,9 +1,11 @@
 package cc.dreamcode.sands.features;
 
+import cc.dreamcode.sands.config.MessageConfig;
+import cc.dreamcode.sands.config.PluginConfig;
 import cc.dreamcode.sands.features.items.StartingItemService;
-import cc.dreamcode.sands.features.killstreak.RewardService;
 import cc.dreamcode.sands.profile.Profile;
 import cc.dreamcode.sands.profile.ProfileService;
+import cc.dreamcode.utilities.builder.MapBuilder;
 import eu.okaeri.injector.annotation.Inject;
 import eu.okaeri.tasker.core.Tasker;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +22,9 @@ public class SandsController implements Listener {
 
     private final ProfileService profileService;
     private final Tasker tasker;
-    private final RewardService rewardService;
     private final StartingItemService startingItemService;
+    private final PluginConfig pluginConfig;
+    private final MessageConfig messageConfig;
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -29,6 +32,13 @@ public class SandsController implements Listener {
         Player player = event.getPlayer();
 
         event.setJoinMessage(null);
+        if (this.pluginConfig.motdChatJoin) {
+            this.messageConfig.motdJoinChat.send(player);
+        }
+
+        if (this.pluginConfig.motdTitleJoin) {
+            this.messageConfig.motdJoinTitle.send(player);
+        }
 
         if (player.isDead())
             player.spigot().respawn();
@@ -50,16 +60,28 @@ public class SandsController implements Listener {
         event.setDeathMessage(null);
 
         Player victim = event.getEntity();
-        Player killer = victim.getKiller();
+        Player attacker = victim.getKiller();
 
         this.profileService.modifyProfile(victim.getUniqueId(), profile -> {
             profile.getProfileStatistics().resetKillstreak();
         });
 
-        if (killer != null) {
-            this.profileService.modifyProfile(killer.getUniqueId(), killerProfile -> {
+        if (attacker != null) {
+            this.profileService.modifyProfile(attacker.getUniqueId(), killerProfile -> {
                 killerProfile.getProfileStatistics().addKill();
-                this.rewardService.giveReward(killerProfile, killer);
+
+                if (this.pluginConfig.killChatMessage) {
+                    this.messageConfig.killChatMessage.with(new MapBuilder<String, Object>()
+                                    .put("victim", victim.getName())
+                                    .put("attacker", attacker.getName())
+                                    .build())
+                            .sendAll();
+                }
+
+                if (this.pluginConfig.killTitleMessage) {
+                    this.messageConfig.playerKillTitleKiller.send(attacker);
+                    this.messageConfig.playerKillTitleKilled.send(victim);
+                }
             });
         }
 

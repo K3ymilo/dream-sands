@@ -96,4 +96,16 @@ public class PluginConfig extends OkaeriConfig {
     @Comment("Czas teleportacji w sekundach na spawna.")
     @Comment("Uprawnienia do omijania cooldownu: (sandsplugin.spawn.bypass)")
     public Duration teleportTime = Duration.ofSeconds(5);
+
+    @Comment
+    @Comment("Czy title po zabiciu gracza ma być włączony?")
+    public boolean killTitleMessage = true;
+    @Comment("Czy broadcast po zabiciu gracza ma być włączony?")
+    public boolean killChatMessage = true;
+
+    @Comment
+    @Comment("Czy message po wejściu na czacie ma być wyświetlony?")
+    public boolean motdChatJoin = true;
+    @Comment("Czy message po wejściu na title ma być wyświetlony?")
+    public boolean motdTitleJoin = true;
 }

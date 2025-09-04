@@ -3,6 +3,7 @@ package cc.dreamcode.sands.config;
 import cc.dreamcode.notice.bukkit.BukkitNotice;
 import cc.dreamcode.platform.bukkit.component.configuration.Configuration;
 import eu.okaeri.configs.OkaeriConfig;
+import eu.okaeri.configs.annotation.Comment;
 import eu.okaeri.configs.annotation.CustomKey;
 import eu.okaeri.configs.annotation.Header;
 import eu.okaeri.configs.annotation.Headers;
@@ -55,12 +56,19 @@ public class MessageConfig extends OkaeriConfig {
     public BukkitNotice spawnAlreadyTeleportingMessage = BukkitNotice.title("&aTrwa Teleportacja...");
     @CustomKey("success-teleport-spawn-message")
     public BukkitNotice successMessage = BukkitNotice.subtitle("&7Zostałeś &fprzeteleportowany&7!");
-    @CustomKey("move-teleport-spawn-message")
-    public BukkitNotice moveTeleportSpawnMessage = BukkitNotice.subtitle("&cTwoja teleportacja została przerwana!");
-    @CustomKey("setspawn-end-location")
-    public BukkitNotice setEndSpawnLocation = BukkitNotice.chat("&8[&f!&8] &aPomyslnie ustawiono lokalizacje spawna endu.");
-    @CustomKey("setspawn-nether-location")
-    public BukkitNotice setSpawnNetherLocation = BukkitNotice.chat("&8[&f!&8] &aPomyslnie ustawiono lokalizacje spawna netheru.");
     @CustomKey("teleport-message")
     public BukkitNotice teleportMessage = BukkitNotice.subtitle("&7Zostaniesz &fprzeteleportowany &fza &e{time}&7!");
+
+    @CustomKey("kill-chat-message")
+    public BukkitNotice killChatMessage = BukkitNotice.chat("&f{victim} &7został zabity przez &f{attacker}");
+    @CustomKey("player-kill-title-killer")
+    public BukkitNotice playerKillTitleKiller = BukkitNotice.titleSubtitle("&aZabójstwo!", "&cZabiłeś");
+    @CustomKey("player-kill-title-killed")
+    public BukkitNotice playerKillTitleKilled = BukkitNotice.titleSubtitle("&cZginąłeś!", "Zabity!");
+
+    @CustomKey("motd-join-chat")
+    public BukkitNotice motdJoinChat = BukkitNotice.chat("Test");
+    @CustomKey("motd-join-title")
+    public BukkitNotice motdJoinTitle = BukkitNotice.title("Test");
+
 }
