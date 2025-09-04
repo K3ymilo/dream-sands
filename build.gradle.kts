@@ -10,7 +10,7 @@ idea {
 }
 
 allprojects {
-    group = "cc.dreamcode.template"
+    group = "cc.dreamcode.sands"
     version = "1.0-InDEV"
 
     apply(plugin = "java-library")

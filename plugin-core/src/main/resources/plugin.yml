@@ -1,7 +1,7 @@
-main: "cc.dreamcode.template.TemplatePlugin"
+main: "cc.dreamcode.sands.SandsPlugin"
 version: "1.0-InDEV"
-name: "Dream-Template"
-description: "Dream-Template plugin written by dreamcode.cc"
+name: "Dream-Sands"
+description: "Dream-Sands plugin written by dreamcode.cc"
 website: "https://dreamcode.cc"
-author: "author"
+author: "Keymilo"
 api-version: 1.13

@@ -18,7 +18,7 @@ dependencies {
 
     // -- dream-platform --
     implementation("cc.dreamcode.platform:bukkit:1.13.8")
-    //implementation("cc.dreamcode.platform:bukkit-hook:1.13.8")
+    implementation("cc.dreamcode.platform:bukkit-hook:1.13.8")
     implementation("cc.dreamcode.platform:bukkit-config:1.13.8")
     implementation("cc.dreamcode.platform:dream-command:1.13.8")
     implementation("cc.dreamcode.platform:persistence:1.13.8")
@@ -43,25 +43,25 @@ dependencies {
 
 tasks.withType<ShadowJar> {
 
-    archiveFileName.set("Dream-Template-${project.version}.jar")
+    archiveFileName.set("Dream-Sands-${project.version}.jar")
     mergeServiceFiles()
 
-    relocate("com.cryptomorin", "cc.dreamcode.template.libs.com.cryptomorin")
-    relocate("eu.okaeri", "cc.dreamcode.template.libs.eu.okaeri")
-    relocate("net.kyori", "cc.dreamcode.template.libs.net.kyori")
+    relocate("com.cryptomorin", "cc.dreamcode.sands.libs.com.cryptomorin")
+    relocate("eu.okaeri", "cc.dreamcode.sands.libs.eu.okaeri")
+    relocate("net.kyori", "cc.dreamcode.sands.libs.net.kyori")
 
-    relocate("cc.dreamcode.platform", "cc.dreamcode.template.libs.cc.dreamcode.platform")
-    relocate("cc.dreamcode.utilities", "cc.dreamcode.template.libs.cc.dreamcode.utilities")
-    relocate("cc.dreamcode.menu", "cc.dreamcode.template.libs.cc.dreamcode.menu")
-    relocate("cc.dreamcode.command", "cc.dreamcode.template.libs.cc.dreamcode.command")
-    relocate("cc.dreamcode.notice", "cc.dreamcode.template.libs.cc.dreamcode.notice")
+    relocate("cc.dreamcode.platform", "cc.dreamcode.sands.libs.cc.dreamcode.platform")
+    relocate("cc.dreamcode.utilities", "cc.dreamcode.sands.libs.cc.dreamcode.utilities")
+    relocate("cc.dreamcode.menu", "cc.dreamcode.sands.libs.cc.dreamcode.menu")
+    relocate("cc.dreamcode.command", "cc.dreamcode.sands.libs.cc.dreamcode.command")
+    relocate("cc.dreamcode.notice", "cc.dreamcode.sands.libs.cc.dreamcode.notice")
 
-    relocate("org.bson", "cc.dreamcode.template.libs.org.bson")
-    relocate("com.mongodb", "cc.dreamcode.template.libs.com.mongodb")
-    relocate("com.zaxxer", "cc.dreamcode.template.libs.com.zaxxer")
-    relocate("org.slf4j", "cc.dreamcode.template.libs.org.slf4j")
-    relocate("org.json", "cc.dreamcode.template.libs.org.json")
-    relocate("com.google.gson", "cc.dreamcode.template.libs.com.google.gson")
+    relocate("org.bson", "cc.dreamcode.sands.libs.org.bson")
+    relocate("com.mongodb", "cc.dreamcode.sands.libs.com.mongodb")
+    relocate("com.zaxxer", "cc.dreamcode.sands.libs.com.zaxxer")
+    relocate("org.slf4j", "cc.dreamcode.sands.libs.org.slf4j")
+    relocate("org.json", "cc.dreamcode.sands.libs.org.json")
+    relocate("com.google.gson", "cc.dreamcode.sands.libs.com.google.gson")
 
     minimize {
         parent!!.project(":plugin-core:nms").subprojects.forEach {
